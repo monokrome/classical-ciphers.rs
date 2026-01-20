@@ -1,0 +1,11 @@
+[package]
+name = "classical-ciphers"
+version = "0.1.0"
+edition = "2021"
+description = "Classical cipher implementations: Caesar, Vigenère, Atbash, XOR"
+license = "MIT"
+repository = "https://github.com/monokrome/classical-ciphers"
+keywords = ["cipher", "cryptography", "caesar", "vigenere", "atbash"]
+categories = ["cryptography", "encoding"]
+
+[dependencies]
