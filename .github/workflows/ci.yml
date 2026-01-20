@@ -75,3 +75,16 @@ jobs:
       - name: Install cargo-udeps
         run: cargo install cargo-udeps --locked
       - run: cargo +nightly udeps --all-targets
+
+  publish:
+    name: Publish
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: [fmt, clippy, test, security, deny]
+    environment: release
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - run: cargo publish
+        env:
+          CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_REGISTRY_TOKEN }}
